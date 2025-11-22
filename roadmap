@@ -1,0 +1,45 @@
+functions temp,processes,
+
+
+processes 
+low+0.1c
+medium 1.9
+high2.3
+big like cs or vscode 7.9
+
+
+which affects temp
+
+a device cannot function properly at high temp
+
+
+cpu % usage and ram as stats
+
+
+press enter to turn pc on 
+stats 1% cpu usage ram 200 mb
+ list of functions?
+ kernel
+ updatecheck
+ gui
+ firewall
+ browser
+ cs2
+ spotify
+ discord
+ network
+ smallprocess
+ smallprocess2
+ miniprocess
+ powermanagment
+
+
+// fan control effect
+
+fan max=1000 rpm 
+
+smth like fan=100  100rpm= -1c
+
+reminder , 
+fan needs to be fixed
+processes which add temp memory cpu   adding removing 
