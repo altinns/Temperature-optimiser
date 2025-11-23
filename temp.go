@@ -34,13 +34,13 @@ kernel:=desktop {
 }
 
 
- /*updatecheck:=desktop {
+ updatecheck:=desktop {
 	name:"updatecheck",
 	process:1,
 	cpu:0.4,
 	memory:25,
    temperature:1.1,
-}*/
+}
 
  gui:=desktop {
 	name:"gui",
@@ -57,17 +57,17 @@ firewall:=desktop {
 	memory:80,
    temperature:1.3,
 }
-/*
+
 browser:=desktop {
-	name:"browser"
+	name:"browser",
 	process:1,
 	cpu:5.8,
 	memory:200,
    temperature:+3.5,
-}*/
-/*
+}
+
  cs2:=desktop {
-	name:"cs2"
+	name:"cs2",
 	process:1,
 	cpu:30.58,
 	memory:4000,
@@ -86,7 +86,7 @@ discord:=desktop {
 	cpu:10,
 	memory:120,
    temperature:+3.0,
-}*/
+}
 network:=desktop {
 	name:"network",
 	process:1,
@@ -141,7 +141,7 @@ cpucount=(firewall.cpu+powermanagment.cpu+miniprocess.cpu+smallprocess.cpu+small
 
 //var tempchange float32
 processcount2 :=[]string{}
-
+notActive:=[]string{}
 //var fanset *float32
 //fanset=&fan
 //alternative to print process names
@@ -149,22 +149,27 @@ processcount2=append(processcount2, firewall.name,powermanagment.name,miniproces
 processcount3:=strings.Join(processcount2,"\n")
 //var test string= firewall.name
 // processcount2:=[]struct{firewall.name,powermanagment,miniprocess.name,smallprocess.name,smallprocess2.name,network.name,gui.name,kernel.name}
+//up is current active process list
+
+//not active bottom pccontroll==4
 
 
 fanpercentage=fan/1000*100
 
 Temp=currentTemp-fanpercentage
-
+turnon:
 fmt.Printf("turn on pc with 1\n")
 fmt.Scan(&currently)
-fmt.Printf("Pc is on\n")
+
 
 
 if currently==1{
-
+fmt.Printf("Pc is on\n")
 fmt.Printf(" %vprocesses are active,cpu:%v fan:%v temp:%v   Memory:%dMb   \n" ,processcount,cpucount,fan,Temp,ram)
 
 
+} else {
+	goto turnon
 }
 var pccontrol int8
 start:
@@ -209,8 +214,17 @@ if pccontrol==4{
 	fmt.Println("add process")
 
 //create 2 slices, 1 active 1 not active , if active remove from not active , if active to not active remove from active append to not active
-	fmt.Println(processcount2)
 	
+	
+
+	
+
+notActive=append(notActive,updatecheck.name,browser.name,cs2.name,spotify.name,discord.name)
+notActive:=strings.Join(notActive,"\n")
+fmt.Println(notActive)
+
+// a scan ,  remove process from not active , add to processcount2
+
 }
 
 
