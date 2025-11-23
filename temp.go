@@ -222,7 +222,7 @@ if pccontrol==4{
 notActive=append(notActive,updatecheck.name,browser.name,cs2.name,spotify.name,discord.name)
 notActive:=strings.Join(notActive,"\n")
 fmt.Printf(notActive)
-var processAdd string
+// var processAdd string
 fmt.Println("enter proccess name:")
 //fmt.Scan($processAdd) remove //
 /*
@@ -230,7 +230,7 @@ for i:=0;i<notActive.len;i++{
 	if processAdd==notActive[i]{
 		processcount2:=append(processcount2,notActive)
 	}
-}*/ remove //
+}*/ // remove //
 // a scan ,  remove process from not active , add to processcount2
 
 }
