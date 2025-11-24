@@ -210,6 +210,21 @@ fmt.Printf(" %vprocesses are active,cpu:%v fan:%v temp:%v   Memory:%dMb  \n",pro
 goto start
 }
 
+var ramProcess []int
+//var listofProcess []int8
+var cpupercentage  []float32 
+var Tempaffect []float32
+
+
+
+
+notActive=append(notActive,updatecheck.name,browser.name,cs2.name,spotify.name,discord.name)
+ramProcess=append(ramProcess,updatecheck.memory,browser.memory,cs2.memory,spotify.memory,discord.memory)
+//listofProcess=append(listofProcess,updatecheck.process,browser.process,cs2.process,spotify.process,discord.process)
+cpupercentage=append(cpupercentage,updatecheck.cpu,browser.cpu,cs2.cpu,spotify.cpu,discord.cpu)
+Tempaffect=append(Tempaffect,updatecheck.temperature,browser.temperature,cs2.temperature,spotify.temperature,discord.temperature)
+
+
 if pccontrol==4{
 	fmt.Println("add process")
 
@@ -219,18 +234,31 @@ if pccontrol==4{
 
 	
 
-notActive=append(notActive,updatecheck.name,browser.name,cs2.name,spotify.name,discord.name)
-notActive:=strings.Join(notActive,"\n")
-fmt.Printf(notActive)
-// var processAdd string
+
+
+fmt.Println(notActive)
+var processAdd string
 fmt.Println("enter proccess name:")
-//fmt.Scan($processAdd) remove //
-/*
-for i:=0;i<notActive.len;i++{
+fmt.Scan(&processAdd) 
+
+for i:=0;i<len(notActive);i++{
 	if processAdd==notActive[i]{
-		processcount2:=append(processcount2,notActive)
-	}
-}*/ // remove //
+		processcount2=append(processcount2,notActive[i])
+		processcount=processcount+1
+		cpucount=cpucount+cpupercentage[i]
+		Temp=Temp+Tempaffect[i]
+		ram=ram+ramProcess[i]
+    
+} 
+} 
+fmt.Println(processcount2)
+
+fmt.Printf(" %vprocesses are active,cpu:%v fan:%v temp:%v   Memory:%dMb  \n",processcount,cpucount,fan,Temp,ram)
+//program breaking after attempting to add a second attempt
+goto start
+
+
+
 // a scan ,  remove process from not active , add to processcount2
 
 }
